@@ -2,12 +2,14 @@ from agents import Runner
 from geminiConfig import gemini_config
 from my_agents import receiption_agent
 import asyncio
+from run_lifecycle import myrunhooks
 
 async def main():
     result = await Runner.run(
         starting_agent=receiption_agent,
         input="i have a export shipment",
-        run_config = gemini_config
+        run_config = gemini_config,
+        hooks=myrunhooks()
     )
 
     print(result.final_output)
